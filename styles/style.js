@@ -54,7 +54,7 @@ export const gStyle = StyleSheet.create({
     backgroundColor: "#6B8E23",
     width: "30%",
     //marginLeft: "35%",
-    padding: 8,
+    padding: 13,
     alignItems: "center",
     margin: 15,
   },
@@ -91,7 +91,7 @@ export const gStyle = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: "#BC8F8F",
     borderRadius: 5,
-    padding: 10,
+    padding: 13,
     marginRight: 10,
     width: '30%'
   },
@@ -128,7 +128,7 @@ export const gStyle = StyleSheet.create({
   },
   switchIcon: {
     position: "absolute",
-    bottom: '40%',
-    right: '10%'
+    bottom: 7,
+    right: 7
   }
 });

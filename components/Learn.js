@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { gStyle } from "../styles/style";
 import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function Learn({ route, navigation }) {
   const { wordPairs } = route.params;
@@ -44,6 +44,12 @@ export default function Learn({ route, navigation }) {
       {questionMark ? (
         <TouchableOpacity style={gStyle.card} onPress={chanhgeQuestionMark}>
           <Text style={gStyle.word}>{transcription}</Text>
+          <FontAwesome
+            name="exchange"
+            size={24}
+            color="black"
+            style={gStyle.switchIcon}
+          />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity style={gStyle.card} onPress={changeWordOrTranslate}>
@@ -57,9 +63,15 @@ export default function Learn({ route, navigation }) {
               style={gStyle.questionMark}
               onPress={chanhgeQuestionMark}
             >
-              <AntDesign name="questioncircleo" size={30} color="black" />
+              <AntDesign name="questioncircleo" size={35} color="black" />
             </TouchableOpacity>
           )}
+          <FontAwesome
+            name="exchange"
+            size={24}
+            color="black"
+            style={gStyle.switchIcon}
+          />    
         </TouchableOpacity>
       )}
 
@@ -69,18 +81,18 @@ export default function Learn({ route, navigation }) {
         </TouchableOpacity>
       ) : (
         <TouchableOpacity style={gStyle.end} onPress={goBack}>
-          <Text style={[gStyle.title, { paddingTop: 20 }]}>Good job!</Text>
+          <Text style={[gStyle.title, { paddingTop: 20 }]}>Great job!</Text>
           <AntDesign name="back" size={40} color="black" />
         </TouchableOpacity>
       )}
-      <TouchableOpacity style={gStyle.switchBtn}>
+      {/* <TouchableOpacity style={gStyle.switchBtn}>
         <MaterialIcons
           name="published-with-changes"
           size={50}
           color="#6B8E23"
           onPress={changeWordOrTranslate}
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
