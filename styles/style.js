@@ -59,7 +59,7 @@ export const gStyle = StyleSheet.create({
     margin: 15,
   },
   modalContainer: {
-    marginTop: "60%",
+    marginTop: "50%",
     borderWidth: 2,
     borderColor: "#6B8E23",
     borderRadius: 5,
@@ -130,5 +130,11 @@ export const gStyle = StyleSheet.create({
     position: "absolute",
     bottom: 7,
     right: 7
+  },
+  tip: {
+    fontFamily: 'SyneMono',
+    fontSize: 20,
+    position: 'absolute',
+    top: '20%'
   }
 });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { gStyle } from "../styles/style";
 import { Entypo } from "@expo/vector-icons";
@@ -10,6 +10,7 @@ export default function Learn({ route, navigation }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [wordOrTranslate, setWordOrTranslate] = useState(true);
   const [questionMark, setQuestionMark] = useState(false);
+  const [tipVisible, setTipVisible] = useState(true);
 
   const handleNext = () => {
     if (currentIndex < wordPairs.length - 1) {
@@ -17,6 +18,14 @@ export default function Learn({ route, navigation }) {
       setQuestionMark(false);
     }
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTipVisible(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const chanhgeQuestionMark = () => {
     setQuestionMark(!questionMark);
@@ -41,15 +50,14 @@ export default function Learn({ route, navigation }) {
 
   return (
     <View style={gStyle.learnMain}>
+      {tipVisible && (
+        <Text
+          style={gStyle.tip}
+        >Tap on the card to flip it</Text>
+      )}
       {questionMark ? (
         <TouchableOpacity style={gStyle.card} onPress={chanhgeQuestionMark}>
-          <Text style={gStyle.word}>{transcription}</Text>
-          <FontAwesome
-            name="exchange"
-            size={24}
-            color="black"
-            style={gStyle.switchIcon}
-          />
+          <Text style={gStyle.word}>[{transcription}]</Text>
         </TouchableOpacity>
       ) : (
         <TouchableOpacity style={gStyle.card} onPress={changeWordOrTranslate}>
@@ -66,12 +74,6 @@ export default function Learn({ route, navigation }) {
               <AntDesign name="questioncircleo" size={35} color="black" />
             </TouchableOpacity>
           )}
-          <FontAwesome
-            name="exchange"
-            size={24}
-            color="black"
-            style={gStyle.switchIcon}
-          />    
         </TouchableOpacity>
       )}
 
@@ -85,14 +87,6 @@ export default function Learn({ route, navigation }) {
           <AntDesign name="back" size={40} color="black" />
         </TouchableOpacity>
       )}
-      {/* <TouchableOpacity style={gStyle.switchBtn}>
-        <MaterialIcons
-          name="published-with-changes"
-          size={50}
-          color="#6B8E23"
-          onPress={changeWordOrTranslate}
-        />
-      </TouchableOpacity> */}
     </View>
   );
 }
